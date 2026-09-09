@@ -8,13 +8,34 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         
     )
-    
+
+    database_url: str
+
     secret_key: SecretStr
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
 
+    # S3 Configuration
+    s3_bucket_name: str
+    s3_region: str = "us-east-1"
+    s3_access_key_id: SecretStr | None = None
+    s3_secret_access_key: SecretStr | None = None
+    s3_endpoint_url: str | None = None
+
     max_upload_size_bytes: int = 5 * 1024 * 1024  # 5 MB
 
+    post_per_page: int = 10
+
+    reset_access_token_expire_minutes: int = 60
+
+    mail_server: str = "localhost"
+    mail_port: int = 587
+    mail_username: str = ""
+    mail_password: SecretStr = SecretStr("")
+    mail_use_tls: bool = False
+    mail_from: str = "noreply@fastapiblog.com"
+
+    frontend_url: str = "http://localhost:8000" 
 
 settings = Settings() # loaded from .env file
 
