@@ -166,7 +166,7 @@ async def forgot_password(
         token = generate_reset_token()
         token_hash = hash_reset_token(token)
         expires_at = datetime.now(UTC) + timedelta(
-            minutes=settings.reset_token_expire_minutes
+            minutes=settings.reset_access_token_expire_minutes
         )
 
         reset_token = models.PasswordResetToken(

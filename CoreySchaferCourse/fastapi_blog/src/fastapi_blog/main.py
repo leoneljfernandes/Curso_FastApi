@@ -200,7 +200,7 @@ async def general_http_exception_handler(request: Request, exception: StarletteH
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exception: RequestValidationError):
     if request.url.path.startswith("/api"):
-        return await validation_exception_handler(request, exception)
+        return await request_validation_exception_handler(request, exception)
         
     return templates.TemplateResponse(
         request,

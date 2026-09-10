@@ -50,7 +50,7 @@ class PostResponse(PostBase):
     author: UserPublic
     
 class PaginatedPostResponse(BaseModel):
-    post: list[PostResponse]
+    posts: list[PostResponse]
     total: int
     skip: int
     limit: int

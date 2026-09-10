@@ -34,7 +34,7 @@ async def get_posts(
     has_more = skip + len(posts) < total
 
     return PaginatedPostResponse(
-        post=[PostResponse.model_validate(post) for post in posts],
+        posts=[PostResponse.model_validate(post) for post in posts],
         total=total,
         skip=skip,
         limit=limit,
